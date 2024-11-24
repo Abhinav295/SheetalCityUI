@@ -6,14 +6,13 @@ import './App.css';
 
 function App() {
   const[isLoggedIn,setIsLoggedIn]=useState(false);
-  const handleLogin = (username,password,usertype) =>{
-    const correctUserName = "Abhi";
-    const correctPassword = "password123";
-
-    if(username === correctUserName && password ===correctPassword){
+  const[userName,setUserName] = useState("");
+  const handleLogin = (data,message) =>{
+    if(data!=""){
+      setUserName(data);
       setIsLoggedIn(true);
     }else{
-      alert("Invalid Credentials !!")
+      alert("Invalid Credentials !! " + message);
     }
   };
 
@@ -24,7 +23,8 @@ function App() {
   return (
     <div className="App">
       <header><h1>Sheetal City UI</h1></header>
-      {isLoggedIn?(<Dashboard onLogout={handleLogout}/>):(<Login onLogin={handleLogin}/>)}
+      <h3>Welcome {userName}</h3>
+      {isLoggedIn?(<Dashboard onLogout={handleLogout} userName={userName}/>):(<Login onLogin={handleLogin}/>)}
     </div>
   );
 }

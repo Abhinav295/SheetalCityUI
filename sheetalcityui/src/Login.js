@@ -6,9 +6,35 @@ function Login({onLogin}) {
   const [password,setPassword] = useState("");
   const [usertype,setUsertype] = useState("");
 
-  const handleSubmit = (event)=> {
+  const handleSubmit = async(event)=> {
     event.preventDefault();
-    onLogin(username,password,usertype);
+    const bb = 'bb'
+    try{
+      const enCred = btoa(`${bb}:${bb}`);
+      const loginData = {
+        username:username,
+        password:password,
+        type:usertype
+      }
+      const response = await fetch("http://localhost:5000/sheetal.city/login",{
+        method:"POST",
+        headers:{
+          Authorization:`Basic ${enCred}`,
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(loginData)
+      });
+      const data = await response.text();
+      const message = await response.status;
+      if(response.ok){
+      onLogin(data,message);
+      }else{
+        onLogin("",message);
+      }
+    }catch(error){
+      console.error("Error During Login",error);
+      onLogin("");
+    }
   };
   function validateDetails(){
     return username.length>0 && password.length>0 && usertype.length>0 ;

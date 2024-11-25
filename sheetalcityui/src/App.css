@@ -54,3 +54,19 @@
 .input-group{
   margin-bottom: 15px;
 }
+.cards div{
+  border-style: dashed;
+  border-color: #61dafb;
+  border-radius: 90px;
+  align-items: center;
+  padding: 1%;
+  margin: 1%;
+  inline-size:30%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.cards{
+  border-style: solid;
+  border-color: #555;
+  padding: 1%;
+  justify-items: center;
+}

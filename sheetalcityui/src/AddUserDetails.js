@@ -54,8 +54,9 @@ function AddUserDetails({onAddingUser}){
     return(
         <div>
         <h6>Add User Details</h6>
-        <div><button onClick={handleClose}>Close</button></div>
-        <form className="form" onSubmit={handleSubmit}>
+        <div className="form-group" ><button onClick={handleClose}>Close</button></div>
+        <div class="form-container">
+        <form className="form-group" onSubmit={handleSubmit}>
             <label className="lable" >Username</label>
             <input className="input-group" type="text" placeholder="Enter User Name" value={username} onChange={(e)=>setUsername(e.target.value)}></input>
             <label className="lable">Password</label>
@@ -73,6 +74,7 @@ function AddUserDetails({onAddingUser}){
             <br></br>
             <button type="submit">Add Details</button>
         </form>
+        </div>
         </div>
     )
 

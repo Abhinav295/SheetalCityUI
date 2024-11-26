@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import './App.css';
 import AddUserDetails from "./AddUserDetails";
+import ShowUserDetails from "./ShowUserDetails";
 
 function Dashboard({onLogout,userName}){
 const [userdetail,setUserdetail] = useState("");
 const [isAddActive,setIsAddActive] = useState(false);
+const [isShowActive,setIsShowActive] = useState(false);
 const handleUserDetails = (data,message)=>{
     setUserdetail(data);
     if(data){
         console.log("We are good");
-    }else {
-        console.log(message)
         setIsAddActive(false);
+    }else {
+        console.log(message);
+        setIsAddActive(false);
+    }
+}
+const showUserDetails = (message)=>{
+    if(message){
+        setIsShowActive(true);
+    }else{
+        setIsShowActive(false);
     }
 }
 function addUserActive(){
     setIsAddActive(true);
+}
+function showUserActive(){
+    setIsShowActive(true);
 }
 
 
@@ -26,9 +39,9 @@ return(
         <h3>Welcome {userName}</h3>
         <button onClick={onLogout}>Logout</button>
         <div className="cards">
-            {isAddActive?(<AddUserDetails onAddingUser = {handleUserDetails}/>):(<div onClick={addUserActive}>Add Users Details</div>)}
-            <div onClick={(e)=>{e.preventDefault();console.log("Show Users List")}}>Show Users List</div>
-            <div onClick={(e)=>{e.preventDefault();console.log("Delete User Details")}}>Delete User Details</div>
+            {isAddActive?(<AddUserDetails onAddingUser = {handleUserDetails}/>):(<div className="cardsDiv" onClick={addUserActive}>Add Users Details</div>)}
+            {isShowActive?(<ShowUserDetails onShowUser = {showUserDetails}/>):(<div className="cardsDiv" onClick={showUserActive}>Show User Details</div>)}
+            <div className="cardsDiv" onClick={(e)=>{e.preventDefault();console.log("Delete User Details")}}>Delete User Details</div>
         </div>
     </div>
 )

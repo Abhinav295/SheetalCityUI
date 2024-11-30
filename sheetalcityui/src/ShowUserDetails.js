@@ -5,6 +5,8 @@ function ShowUserDetails({onShowUser}){
     const [users,setUsers] = useState([]);
     const [loading,setLoading]=useState(true);
     const [error,setError]= useState(null);
+    const [searchQuery,setSearchQuery] = useState("");
+    const [filterdItems,setFilterdItems] = useState([]);
 
     useEffect(()=>{
         const bb = 'bb'
@@ -23,6 +25,7 @@ function ShowUserDetails({onShowUser}){
         }
         const data = await response.json();
         setUsers(data);
+        setFilterdItems(users);
     }catch(err){
             setError(err.message);
         }finally{
@@ -32,6 +35,10 @@ function ShowUserDetails({onShowUser}){
     fetchData()
     },[]);
 
+    useEffect(()=>{
+        const results = users.filter((user)=> user.firstName.toLowerCase().includes(searchQuery.toLowerCase()));
+        setFilterdItems(results);
+    },[searchQuery,users]);
 
     const handleClose = (e)=>{
         e.preventDefault();
@@ -54,9 +61,9 @@ function ShowUserDetails({onShowUser}){
         }
         const data =  await response.text();
         console.log(data);
-        const userList = [...users];
-        userList.splice(i,1);
-        setUsers(userList);
+        const updatedList = users.filter((item)=>item.id!==i);
+        setUsers(updatedList);
+        setFilterdItems(users);
 
         }catch(err){
             setError(err.message);
@@ -65,11 +72,14 @@ function ShowUserDetails({onShowUser}){
         }
     }
 
+
+
     return (
         <div>
             {loading?(<p>Loading .... </p>):(<p></p>)}
             {error?(<p>{error}</p>):(<p></p>)}
             <h6>Show User Details</h6>
+            <input className="search-box" type='text' placeholder="Search Here" name="searchBox" onChange={(e)=>{setSearchQuery(e.target.value)}}></input>
             <table>
                 <thead>
                     <th>Username</th>
@@ -82,9 +92,9 @@ function ShowUserDetails({onShowUser}){
                     <th>Action</th>
                 </thead>
                 <tbody>
-                {users.map((user)=>(
+                {filterdItems.map((user)=>(
                     <tr key={user.id}>
-                        <td>{user.username}</td>
+                        <td><input value={user.username}></input></td>
                         <td>{user.firstName}</td>
                         <td>{user.lastName}</td>
                         <td>{user.mobNo}</td>
@@ -92,6 +102,7 @@ function ShowUserDetails({onShowUser}){
                         <td>{user.created_dt}</td>
                         <td>{user.updated_dt}</td>
                         <td><button onClick={()=>handleRemove(user.id)}>Delete</button></td>
+                        <td><button>Edit</button></td>
                     </tr>
                 ))}
                 </tbody>

@@ -68,8 +68,8 @@ function Login({onLogin}) {
     return username.length>0 && password.length>0 && usertype.length>0 ;
   }
     return (
-      <div className="App">
-        <form className="form" onSubmit={handleSubmit}>
+      <div className="Lform-container">
+        <form className="Lform" onSubmit={handleSubmit}>
             <label className="lable" >Username</label>
             <input className="input-group" type="text" placeholder="Enter User Name" value={username} onChange={(e)=>setUsername(e.target.value)}></input>
             <label className="lable">Password</label>

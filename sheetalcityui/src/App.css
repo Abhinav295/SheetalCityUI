@@ -36,6 +36,9 @@
     transform: rotate(360deg);
   }
 }
+body{
+  background-color: #282c34 ;
+}
 
 .lable{
   display: block;
@@ -53,6 +56,16 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
+}
+.Lform-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  position:relative;
+  margin-inline-start: 35%;
 }
 
 .form-container h2 {
@@ -105,6 +118,41 @@
 
 .form-group button:hover {
   background-color: #2563eb;
+}
+
+.Lform {
+  margin-bottom: 1.5rem;
+}
+.Lform input,
+.Lform textarea,
+.Lform select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9fafb;
+  transition: border 0.3s ease;
+}
+.Lform input:focus,
+.Lform textarea:focus,
+.Lform select:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+.Lform button{
+  padding: 2%;
+  border-radius: 40px;
+  margin-right: 5%;
+}
+
+.search-box{
+margin-inline-start: 80%;  
+padding: .7%;
+border-radius: 40px;
+margin-right: 5%;
+margin-bottom: 10px;
 }
 
 button{

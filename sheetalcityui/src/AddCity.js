@@ -7,7 +7,7 @@ function AddCity({onAddingCity}){
 
     const handleClose = (e)=>{
         e.preventDefault();
-        onAddingCity("","Tab is Closed Successfully");
+        onAddingCity("",false);
     }
 
     const handleSubmit = async(event)=>{
@@ -32,20 +32,18 @@ function AddCity({onAddingCity}){
             const message = await response.status;
             if(response.ok){
                 onAddingCity(data,message);
-                console.log(data)
             }else{
                 onAddingCity("",message);
             }
         }catch(error){
-            console.error("Error During Login",error);
-            onAddingCity("");
+            onAddingCity("",error);
         }
     };
 
     return (
     <div>
-        <h6>Add City Details</h6>
-        <div className="form-group" ><button onClick={handleClose}>Close</button></div>
+        <h4>Add City Details</h4>
+        <div className="Logout" ><button onClick={handleClose}>Close</button></div>
         <div class="form-container">
         <form className="form-group" onSubmit={handleSubmit}>
             <label className="lable" >City Name</label>

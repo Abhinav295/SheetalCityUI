@@ -11,7 +11,6 @@ function AddUserDetails({onAddingUser}){
 
     const handleSubmit = async(event)=>{
         event.preventDefault();
-        console.log(username);
         const bb = 'bb'
         try{
             const enCred = btoa(`${bb}:${bb}`);
@@ -36,25 +35,23 @@ function AddUserDetails({onAddingUser}){
             const message = await response.status;
             if(response.ok){
                 onAddingUser(data,message);
-                console.log(data)
             }else{
                 onAddingUser("",message);
             }
         }catch(error){
-            console.error("Error During Login",error);
-            onAddingUser("");
+            onAddingUser("",error);
         }
     };
 
     const handleClose = (e)=>{
         e.preventDefault();
-        onAddingUser("","Tab is Closed Successfully");
+        onAddingUser("",false);
     }
 
     return(
         <div>
-        <h6>Add User Details</h6>
-        <div className="form-group" ><button onClick={handleClose}>Close</button></div>
+        <h4>Add User Details</h4>
+        <div className="Logout" ><button onClick={handleClose}>Close</button></div>
         <div class="form-container">
         <form className="form-group" onSubmit={handleSubmit}>
             <label className="lable" >Username</label>

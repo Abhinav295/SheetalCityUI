@@ -84,7 +84,7 @@ function Login({onLogin}) {
             <label className="lable" for="user3"> I Am a Admin</label><br></br>
             </div>
             <button type="submit" disabled={!validateDetails()}>{validateLogin()}</button>
-            <button type="button" onClick={(e)=>setLogintype(!logintype)}>click Here for SignUp</button>
+            <button type="button" onClick={(e)=>setLogintype(!logintype)}>click Here for {!logintype?"Sign In":"Sign Up"}</button>
         </form>
       </div>
     );

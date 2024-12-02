@@ -18,12 +18,13 @@ function App() {
 
   const handleLogout = () =>{
     setIsLoggedIn(false);
+    setUserName("");
   };
 
   return (
     <div className="App">
-      <header><h1>Sheetal City UI</h1></header>
-      <h3>Welcome {userName}</h3>
+      <header><h1>SHEETAL CITY UI</h1></header>
+      {isLoggedIn?(<h3></h3>):(<h3>Login Page</h3>)}
       {isLoggedIn?(<Dashboard onLogout={handleLogout} userName={userName}/>):(<Login onLogin={handleLogin}/>)}
     </div>
   );

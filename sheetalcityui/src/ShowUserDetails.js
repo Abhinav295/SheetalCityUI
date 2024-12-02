@@ -78,7 +78,7 @@ function ShowUserDetails({onShowUser}){
         <div>
             {loading?(<p>Loading .... </p>):(<p></p>)}
             {error?(<p>{error}</p>):(<p></p>)}
-            <h6>Show User Details</h6>
+            <h4>Show User Details</h4>
             <input className="search-box" type='text' placeholder="Search Here" name="searchBox" onChange={(e)=>{setSearchQuery(e.target.value)}}></input>
             <table>
                 <thead>

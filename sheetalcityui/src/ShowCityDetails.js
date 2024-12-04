@@ -86,7 +86,7 @@ function ShowUserDetails({onShowingCity}){
                     <tr key={city.id}>
                         <td>{city.cityName}</td>
                         <td>{editingRow===index?(<input value={city.maintenancePerMonth} onChange={(e)=>handleChange(index,"maintenancePerMonth",e.target.value)}></input>):(<input value={city.maintenancePerMonth}></input>)}</td>
-                        <td>{editingRow===index?(<input value={city.rsPerUnit} onChange={(e)=>handleChange(index,"rsPerUnit",e.target.value)}></input>):(<input value={city.rsPerUnit   }></input>)}</td>
+                        <td>{editingRow===index?(<input value={city.rsPerUnit} onChange={(e)=>handleChange(index,"rsPerUnit",e.target.value)}></input>):(<input value={city.rsPerUnit}></input>)}</td>
                         <td>{editingRow===index?(<button onClick={()=>handleSave(index)}>Save</button>):(<button onClick={()=>handleEdit(index)}>Edit</button>)}</td>
                     </tr>
                 ))}

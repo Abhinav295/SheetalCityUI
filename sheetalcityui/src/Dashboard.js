@@ -5,6 +5,7 @@ import ShowUserDetails from "./ShowUserDetails";
 import ShowCityDetails from "./ShowCityDetails";
 import AddCity from "./AddCity";
 import AddHouseDetails from "./AddHouseDetails";
+import ShowHouseDetails from "./ShowHouseDetails";
 
 function Dashboard({onLogout,userName}){
 const [showMessage,setShowMessage] = useState(false);
@@ -13,6 +14,7 @@ const [isShowActive,setIsShowActive] = useState(false);
 const [isAddCityActive,setIsAddCityActive] = useState(false);
 const [isShowCityActive,setIsShowCityActive] = useState(false);
 const [isAddHouseDetailsActive,setIsAddHouseDetailsActive] = useState(false);
+const [isShowHouseDetailsActive,setIsShowHouseDetailsActive] = useState(false);
 const [messages,setMessages ] = useState("");
 
 
@@ -92,6 +94,9 @@ function addUserActive(){
     setIsShowActive(false);
     setIsAddCityActive(false);
     setIsShowCityActive(false);
+    setIsAddHouseDetailsActive(false);
+    setIsShowHouseDetailsActive(false);
+    
 }
 
 function showUserActive(){
@@ -99,26 +104,44 @@ function showUserActive(){
     setIsAddActive(false);
     setIsAddCityActive(false);
     setIsShowCityActive(false);
+    setIsAddHouseDetailsActive(false);
+    setIsShowHouseDetailsActive(false);
+   
 }
 function addCityActive(){
     setIsAddCityActive(true);
     setIsAddActive(false);
     setIsShowActive(false);
     setIsShowCityActive(false);
+    setIsAddHouseDetailsActive(false);
+    setIsShowHouseDetailsActive(false);
 }
 function showCityActive(){
     setIsShowCityActive(true);
-    setIsAddCityActive(false);
     setIsAddActive(false);
     setIsShowActive(false);
+    setIsAddCityActive(false);
+    setIsAddHouseDetailsActive(false);
+    setIsShowHouseDetailsActive(false);
+   
 }
 
 function addHouseActive(){
     setIsAddHouseDetailsActive(true);
-    setIsShowCityActive(false);
-    setIsAddCityActive(false);
     setIsAddActive(false);
     setIsShowActive(false);
+    setIsAddCityActive(false);
+    setIsShowCityActive(false);
+    setIsShowHouseDetailsActive(false);
+}
+
+function showHouseActive(){
+    setIsShowHouseDetailsActive(true);
+    setIsAddActive(false);
+    setIsShowActive(false);
+    setIsAddCityActive(false);
+    setIsShowCityActive(false);
+    setIsAddHouseDetailsActive(false);
 }
 
 
@@ -140,7 +163,7 @@ return(
         </div>
         <div className="cards">
             {isAddHouseDetailsActive?(<AddHouseDetails onAddingHouseMapping = {handleHouseMapping}/>):(<div className="cardsDiv" onClick={addHouseActive} >Add House Details</div>)}
-            <div className="cardsDiv" >Show House Details</div>
+            {isShowHouseDetailsActive?(<ShowHouseDetails></ShowHouseDetails>):(<div className="cardsDiv" onClick={showHouseActive} >Show House Details</div>)}
         </div>
         </div>
     </div>

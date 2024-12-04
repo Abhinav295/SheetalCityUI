@@ -9,6 +9,8 @@ function AddHouseDetails({onAddingHouseMapping}){
     const [city,setCity] = useState(null);
     const [block,setBlock] = useState(null);
     const [houseNo,setHouseNo] = useState(null);
+    const [dueElectric,setDueElectric] = useState(0);
+    const [dueMaintenance,setDueMaintenance] = useState(0);
 
     useEffect(()=>{
         const bb = 'bb'
@@ -75,6 +77,8 @@ function AddHouseDetails({onAddingHouseMapping}){
                 houseNo:houseNo,
                 cityDetails:city,
                 userDetails:user,
+                dueElectric:dueElectric,
+                dueMaintenance:dueMaintenance,
             }
             console.log(JSON.stringify(houseMapping));
             const response = await fetch("http://localhost:5000/sheetal.city/house/RegisterHouse",{
@@ -127,7 +131,12 @@ function AddHouseDetails({onAddingHouseMapping}){
                 <option>Block C</option>
                 <option>Block D</option>
             </select>
-            <input type="text" placeholder="Enter House Number" onChange={(e)=>{setHouseNo(e.target.value)}}></input>
+            <label>Enter Houser Number </label>
+            <input type="text" placeholder="Enter House Number"  value={houseNo} onChange={(e)=>{setHouseNo(e.target.value)}}></input>
+            <label>Enter Due Electricity Bill </label>
+            <input type="text" placeholder="Enter Due Electricity Bill" value={dueElectric} onChange={(e)=>{setDueElectric(e.target.value)}}></input>
+            <label>Enter Due Maintenance Bill</label>
+            <input type="text" placeholder="Enter Due Maintenance Bill" value={dueMaintenance} onChange={(e)=>{setDueMaintenance(e.target.value)}}></input>
             <button type="submit">Add Details</button>
             </form>
         </div>

@@ -7,6 +7,7 @@ function ShowUserDetails({onShowUser}){
     const [error,setError]= useState(null);
     const [searchQuery,setSearchQuery] = useState("");
     const [filterdItems,setFilterdItems] = useState([]);
+    const [editingRow,setEditingRow] = useState(null);
 
     useEffect(()=>{
         const bb = 'bb'
@@ -21,7 +22,7 @@ function ShowUserDetails({onShowUser}){
             },
         });
         if(!response.ok){
-            throw new Error("faield to fetch data");
+            throw new Error(`faield to fetch data ${response.status}`);
         }
         const data = await response.json();
         setUsers(data);
@@ -44,6 +45,37 @@ function ShowUserDetails({onShowUser}){
         e.preventDefault();
         onShowUser(false);
     }
+
+    const handleEdit = (index) =>{
+        setEditingRow(index);
+    };
+
+    const handleSave = async (index) => {
+        try{
+            const bb = 'bb'
+            const enCred = btoa(`${bb}:${bb}`);
+            const updateusers = users[index];
+            const response = await fetch(`http://localhost:5000/sheetal.city/updateUser/${updateusers.id}`,{
+            method:"PUT",
+            headers:{
+                Authorization:`Basic ${enCred}`,
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(updateusers)
+        });
+            if(response.ok){
+                setEditingRow(false);
+            }
+        }catch (error){
+            console.error("Error Updating Entry");
+            alert("failed to update the entry");
+        }
+    }
+    const handleChange = (index,field,value)=>{
+        const updateusers = [...users];
+        updateusers[index][field] = value;
+        setUsers(updateusers);
+    };
 
     async function handleRemove(i){
         try{
@@ -92,17 +124,17 @@ function ShowUserDetails({onShowUser}){
                     <th>Action</th>
                 </thead>
                 <tbody>
-                {filterdItems.map((user)=>(
+                {filterdItems.map((user,index)=>(
                     <tr key={user.id}>
-                        <td><input value={user.username}></input></td>
-                        <td>{user.firstName}</td>
-                        <td>{user.lastName}</td>
-                        <td>{user.mobNo}</td>
-                        <td>{user.email}</td>
+                        <td>{user.username}</td>
+                        <td>{editingRow===index?(<input value={user.firstName} onChange={(e)=>{handleChange(index,"firstName",e.target.value)}}/>):(user.firstName)}</td>
+                        <td>{editingRow===index?(<input value={user.lastName} onChange={(e)=>{handleChange(index,"lastName",e.target.value)}}/>):(user.lastName)}</td>
+                        <td>{editingRow===index?(<input value={user.mobNo} onChange={(e)=>{handleChange(index,"mobNo",e.target.value)}}/>):(user.mobNo)}</td>
+                        <td>{editingRow===index?(<input value={user.email} onChange={(e)=>{handleChange(index,"email",e.target.value)}}/>):(user.email)}</td>
                         <td>{user.created_dt}</td>
                         <td>{user.updated_dt}</td>
                         <td><button onClick={()=>handleRemove(user.id)}>Delete</button></td>
-                        <td><button>Edit</button></td>
+                        <td>{editingRow===index?(<button onClick={()=>{handleSave(index)}}>Save</button>):(<button onClick={()=>{handleEdit(index)}}>Edit</button>)}</td>
                     </tr>
                 ))}
                 </tbody>

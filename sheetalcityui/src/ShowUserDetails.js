@@ -104,10 +104,8 @@ function ShowUserDetails({onShowUser}){
         }
     }
 
-
-
     return (
-        <div>
+        <div className="container">
             {loading?(<p>Loading .... </p>):(<p></p>)}
             {error?(<p>{error}</p>):(<p></p>)}
             <h4>Show User Details</h4>
@@ -121,7 +119,8 @@ function ShowUserDetails({onShowUser}){
                     <th>Email</th>
                     <th>Created Date</th>
                     <th>Updated Date</th>
-                    <th>Action</th>
+                    <th>Delete Action</th>
+                    <th>Edit Action</th>
                 </thead>
                 <tbody>
                 {filterdItems.map((user,index)=>(
@@ -139,7 +138,7 @@ function ShowUserDetails({onShowUser}){
                 ))}
                 </tbody>
             </table>
-            <div className="form-group"><button onClick={handleClose}>Close</button></div>
+            <div><button onClick={handleClose}>Close</button></div>
         </div>
     );
 }

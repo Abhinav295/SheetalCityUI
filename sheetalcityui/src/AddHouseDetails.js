@@ -108,10 +108,9 @@ function AddHouseDetails({onAddingHouseMapping}){
     }
 
     return (
-        <div className="form-container">
-            <h4>Add House Details</h4>
-            <div className="Logout" ><button onClick={handleClose}>Close</button></div>
-            <form className="form-group" onSubmit={handleSubmit}>
+        <div className="container">
+            <div className="flex" ><h4>Add House Details</h4><button onClick={handleClose}>Close</button></div>
+            <form onSubmit={handleSubmit}>
             <select onChange={handleCity}>
             <option>Select User City</option>
                 {cityList.map((city)=>(

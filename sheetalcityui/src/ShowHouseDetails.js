@@ -36,7 +36,7 @@ function ShowHouseDetails(){
     },[]);
 
     return (
-        <div>
+        <div className="container">
             {loading?(<p>Loading .... </p>):(<p></p>)}
             {error?(<p>{error}</p>):(<p></p>)}
             <h4>Show Registered House</h4>

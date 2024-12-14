@@ -41,17 +41,19 @@ function AddCity({onAddingCity}){
     };
 
     return (
-    <div>
-        <h4>Add City Details</h4>
-        <div className="Logout" ><button onClick={handleClose}>Close</button></div>
-        <div class="form-container">
-        <form className="form-group" onSubmit={handleSubmit}>
-            <label className="lable" >City Name</label>
-            <input className="input-group" type="text" placeholder="Enter City Name" value={cityName} onChange={(e)=>setCityName(e.target.value)}></input>
-            <label className="lable">Maintenance Per Month</label>
-            <input className="input-group" type="text" placeholder="Maintenance Per Month" value={cityMaintenancePerMonth} onChange={(e)=>setCityMaintenancePerMonth(e.target.value)}></input>
-            <label className="lable">Electricity Per Unit</label>
-            <input className="input-group" type="text" placeholder="Rs Per Unit " value={cityRsPerUnit} onChange={(e)=>setCityRsPerUnit(e.target.value)}></input>
+    <div className="container">
+        <div className="flex">
+            <h4>Add City Details</h4>
+            <button onClick={handleClose}>Close</button>
+        </div>
+        <div>
+        <form onSubmit={handleSubmit}>
+            <label>City Name</label>
+            <input type="text" placeholder="Enter City Name" value={cityName} onChange={(e)=>setCityName(e.target.value)}></input>
+            <label >Maintenance Per Month</label>
+            <input  type="text" placeholder="Maintenance Per Month" value={cityMaintenancePerMonth} onChange={(e)=>setCityMaintenancePerMonth(e.target.value)}></input>
+            <label >Electricity Per Unit</label>
+            <input type="text" placeholder="Rs Per Unit " value={cityRsPerUnit} onChange={(e)=>setCityRsPerUnit(e.target.value)}></input>
             <br></br>
             <button type="submit">Add City Details</button>
         </form>

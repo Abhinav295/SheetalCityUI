@@ -22,8 +22,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header><h1>SHEETAL CITY UI</h1></header>
+    <div className='container'>
+      <header className='flex-center'><h1>SHEETAL CITY UI</h1></header>
       {isLoggedIn?(<h3></h3>):(<h3>Login Page</h3>)}
       {isLoggedIn?(<Dashboard onLogout={handleLogout} userName={userName}/>):(<Login onLogin={handleLogin}/>)}
     </div>

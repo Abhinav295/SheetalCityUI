@@ -71,7 +71,7 @@ function ShowUserDetails({onShowingCity}){
 
 
     return (
-        <div>
+        <div className="container">
             {loading?(<p>Loading .... </p>):(<p></p>)}
             {error?(<p>{error}</p>):(<p></p>)}
             <h4>Show User Details</h4>
@@ -80,6 +80,7 @@ function ShowUserDetails({onShowingCity}){
                     <th>City Name</th>
                     <th>Maintenance Per Month</th>
                     <th>Electric Rate Per Unit</th>
+                    <th>Action</th>
                 </thead>
                 <tbody>
                 {cities.map((city,index)=>(
@@ -92,7 +93,7 @@ function ShowUserDetails({onShowingCity}){
                 ))}
                 </tbody>
             </table>
-            <div className="form-group"><button onClick={handleClose}>Close</button></div>
+            <div><button onClick={handleClose}>Close</button></div>
         </div>
     );
 }

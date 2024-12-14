@@ -49,25 +49,27 @@ function AddUserDetails({onAddingUser}){
     }
 
     return(
+        <div className="container">
+        <div className="flex"><h4>Add User Details</h4>
+        <button onClick={handleClose}>Close</button></div>
         <div>
-        <h4>Add User Details</h4>
-        <div className="Logout" ><button onClick={handleClose}>Close</button></div>
-        <div class="form-container">
-        <form className="form-group" onSubmit={handleSubmit}>
-            <label className="lable" >Username</label>
-            <input className="input-group" type="text" placeholder="Enter User Name" value={username} onChange={(e)=>setUsername(e.target.value)}></input>
-            <label className="lable">Password</label>
-            <input className="input-group" type="password" placeholder="Enter Password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
-            <label className="lable">First Name</label>
-            <input className="input-group" type="text" placeholder="Enter First Name" value={firstname} onChange={(e)=>setFirstname(e.target.value)}></input>
-            <label className="lable">Last Name</label>
-            <input className="input-group" type="text" placeholder="Enter Last Name" value={lastname} onChange={(e)=>setLastname(e.target.value)}></input>
-            <label className="lable">Email Address</label>
-            <input className="input-group" type="email" placeholder="Enter Email Address" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
-            <label className="lable">Mobile Number</label>
-            <input className="input-group" type="text" placeholder="Enter Mobile Number" value={mobile} onChange={(e)=>setMobile(e.target.value)}></input>
-            <label className="lable">Active User</label>
-            <input className="input-group" type="checkbox" placeholder="Is User Active" value={isActive} onChange={(e)=>setIsActive(e.target.value)}></input>
+        <form onSubmit={handleSubmit}>
+            <label >Username</label>
+            <input type="text" placeholder="Enter User Name" value={username} onChange={(e)=>setUsername(e.target.value)}></input>
+            <label >Password</label>
+            <input type="password" placeholder="Enter Password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
+            <label >First Name</label>
+            <input type="text" placeholder="Enter First Name" value={firstname} onChange={(e)=>setFirstname(e.target.value)}></input>
+            <label >Last Name</label>
+            <input type="text" placeholder="Enter Last Name" value={lastname} onChange={(e)=>setLastname(e.target.value)}></input>
+            <label >Email Address</label>
+            <input type="email" placeholder="Enter Email Address" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+            <label >Mobile Number</label>
+            <input type="text" placeholder="Enter Mobile Number" value={mobile} onChange={(e)=>setMobile(e.target.value)}></input>
+            <div  className="flex-center">
+            <label >Active User</label>
+            <input type="checkbox" placeholder="Is User Active" value={isActive} onChange={(e)=>setIsActive(e.target.value)}></input>
+            </div>
             <br></br>
             <button type="submit">Add Details</button>
         </form>

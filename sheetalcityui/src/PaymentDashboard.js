@@ -8,12 +8,15 @@ function PaymentDashboard({onClose}){
 
     return (
     <div className="card">
-        <h3>Welcome to the Payment Operations Dashboard</h3>
+        <div className="container">
+        <div className="flex"><h3>Welcome to the Payment Operations Dashboard</h3>
         <button onClick={onClose}>Close</button>
+        </div>
         <div className="card">
             {isAddAdvancePaymentActive?(<AddAdvancePayment/>):(<div onClick={(e)=>{setIsAddAdvancePaymentActive(true)}}>Adavance Payment</div>)}
         </div>
         <div className="card"><AddDuePayment/></div>
+    </div>
     </div>);
 }
 

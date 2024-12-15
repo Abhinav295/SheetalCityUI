@@ -34,7 +34,7 @@ function ShowHouseDetails(){
         }
         fetchData();
     },[]);
-
+    
     return (
         <div className="container">
             {loading?(<p>Loading .... </p>):(<p></p>)}

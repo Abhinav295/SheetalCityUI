@@ -1,7 +1,7 @@
 import './Main.css'
 import { useState, useEffect } from "react";
 
-function AddAdvancePayment(){
+function AddAdvancePayment({onAddPayment}){
     const [houseMappings,setHouseMappings] = useState([]);
     const [users,setUsers] = useState([]);
     const [loading,setLoading]=useState(true);
@@ -30,12 +30,14 @@ function AddAdvancePayment(){
             },
         });
                 if(!response.ok){
+                    onAddPayment("",`failed to fetch data ${response.status}`)
                     throw Error(`failed to fetch data ${response.status}`)
                 }
                 const data = await response.json();
                 setUsers(data);
             }catch(err){
                 setError(err);
+                onAddPayment("",`failed to fetch data ${err}`)
             }finally{
                 setLoading(false);
             }
@@ -77,12 +79,15 @@ function AddAdvancePayment(){
             const data = await response.text();
             const message = await response.status;
             if(response.ok){
+                onAddPayment(data,message)
                 setError(data,message);
             }else{
+                onAddPayment("",message);
                 setError("",message);
             }
         }catch(error){
             setError("",error);
+            onAddPayment("",error);
         }
     }
 

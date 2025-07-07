@@ -131,11 +131,11 @@ function AddHouseDetails({onAddingHouseMapping}){
                 <option>Block D</option>
             </select>
             <label>Enter Houser Number </label>
-            <input type="text" placeholder="Enter House Number"  value={houseNo} onChange={(e)=>{setHouseNo(e.target.value)}}></input>
+            <input type="number" placeholder="Enter House Number"  value={houseNo} onChange={(e)=>{setHouseNo(e.target.value)}} required></input>
             <label>Enter Due Electricity Bill </label>
-            <input type="text" placeholder="Enter Due Electricity Bill" value={dueElectric} onChange={(e)=>{setDueElectric(e.target.value)}}></input>
+            <input type="number" placeholder="Enter Due Electricity Bill" value={dueElectric} onChange={(e)=>{setDueElectric(e.target.value)}}></input>
             <label>Enter Due Maintenance Bill</label>
-            <input type="text" placeholder="Enter Due Maintenance Bill" value={dueMaintenance} onChange={(e)=>{setDueMaintenance(e.target.value)}}></input>
+            <input type="number" placeholder="Enter Due Maintenance Bill" value={dueMaintenance} onChange={(e)=>{setDueMaintenance(e.target.value)}}></input>
             <button type="submit">Add Details</button>
             </form>
         </div>

@@ -74,7 +74,7 @@ function ShowUserDetails({onShowingCity}){
         <div className="container">
             {loading?(<p>Loading .... </p>):(<p></p>)}
             {error?(<p>{error}</p>):(<p></p>)}
-            <h4>Show User Details</h4>
+            <h4>Show City Details</h4>
             <table>
                 <thead>
                     <th>City Name</th>

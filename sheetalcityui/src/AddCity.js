@@ -49,7 +49,7 @@ function AddCity({onAddingCity}){
         <div>
         <form onSubmit={handleSubmit}>
             <label>City Name</label>
-            <input type="text" placeholder="Enter City Name" value={cityName} onChange={(e)=>setCityName(e.target.value)}></input>
+            <input type="text" placeholder="Enter City Name" value={cityName} onChange={(e)=>setCityName(e.target.value)} required></input>
             <label >Maintenance Per Month</label>
             <input  type="text" placeholder="Maintenance Per Month" value={cityMaintenancePerMonth} onChange={(e)=>setCityMaintenancePerMonth(e.target.value)}></input>
             <label >Electricity Per Unit</label>

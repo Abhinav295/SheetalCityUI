@@ -45,7 +45,11 @@ function UsersOperationDashboard({onClose}){
             if(data){
                 showMessages(`City is Created Successfully Username ${data}`);
                 setIsAddCityActive(false);
-            }else {
+            }else if(message === 400){
+                setIsAddCityActive(false);
+                showMessages("City is Already Created");
+            }
+            else {
                 setIsAddCityActive(false);
                 showMessages(`City is Facing Some Problem while Creation Error Response ${message}`);
             }
@@ -67,7 +71,11 @@ function UsersOperationDashboard({onClose}){
             if(data){
                 showMessages(`User is Registeed Successfully With House No ${data}`);
                 setIsAddHouseDetailsActive(false);
-            }else {
+            }else if(message == 400){
+                setIsAddHouseDetailsActive(false);
+                showMessages("User is Already Registered With House No");
+            }
+            else {
                 setIsAddHouseDetailsActive(false);
                 showMessages(`There is some problem while Registration ${message}`);
             }
@@ -81,10 +89,8 @@ function UsersOperationDashboard({onClose}){
     function showMessages(message){
         setShowMessage(true);
         setMessages(message);
-            setTimeout(()=>{setShowMessage(false);setMessages("");},3000);
+        setTimeout(()=>{setShowMessage(false);setMessages("");},3000);
     }
-    
-    
     
     function addUserActive(){
         setIsAddActive(true);

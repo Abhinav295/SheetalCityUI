@@ -55,15 +55,15 @@ function AddUserDetails({onAddingUser}){
         <div>
         <form onSubmit={handleSubmit}>
             <label >Username</label>
-            <input type="text" placeholder="Enter User Name" value={username} onChange={(e)=>setUsername(e.target.value)}></input>
+            <input type="text" placeholder="Enter User Name" value={username} onChange={(e)=>setUsername(e.target.value)} required></input>
             <label >Password</label>
-            <input type="password" placeholder="Enter Password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
+            <input type="password" placeholder="Enter Password" value={password} onChange={(e)=>setPassword(e.target.value)} required></input>
             <label >First Name</label>
-            <input type="text" placeholder="Enter First Name" value={firstname} onChange={(e)=>setFirstname(e.target.value)}></input>
+            <input type="text" placeholder="Enter First Name" value={firstname} onChange={(e)=>setFirstname(e.target.value)} required></input>
             <label >Last Name</label>
             <input type="text" placeholder="Enter Last Name" value={lastname} onChange={(e)=>setLastname(e.target.value)}></input>
             <label >Email Address</label>
-            <input type="email" placeholder="Enter Email Address" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+            <input type="email" placeholder="Enter Email Address" value={email} onChange={(e)=>setEmail(e.target.value)} required></input>
             <label >Mobile Number</label>
             <input type="text" placeholder="Enter Mobile Number" value={mobile} onChange={(e)=>setMobile(e.target.value)}></input>
             <div  className="flex-center">

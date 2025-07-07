@@ -1,6 +1,8 @@
 import { useState } from "react";
 import AddAdvancePayment from "./AddAdvancePayment";
 import AddDuePayment from "./AddDuePayment";
+import AddDuePaymentByCustomer from "./AddDuePaymentByCustomer";
+import AddDuePaymentByCities from "./AddDuePaymentByCities";
 
 function PaymentDashboard({onClose}){
 
@@ -26,14 +28,16 @@ function PaymentDashboard({onClose}){
     return (
     <div className="card">
         <div className="container">
-        <div className="flex"><h3>Welcome to the Payment Operations Dashboard</h3>
-        <button onClick={onClose}>Close</button>
+            <div className="flex"><h3>Welcome to the Payment Operations Dashboard</h3>
+            <button onClick={onClose}>Close</button>
         </div>
         {showMessage?(<p>{messages}</p>):(<p></p>)}
         <div className="card">
             {isAddAdvancePaymentActive?(<AddAdvancePayment onAddPayment = {handlePayment}/>):(<div onClick={(e)=>{setIsAddAdvancePaymentActive(true)}}>Adavance Payment</div>)}
         </div>
         <div className="card"><AddDuePayment/></div>
+        <div className="card"><AddDuePaymentByCities/></div>
+        <div className="card"><AddDuePaymentByCustomer/></div>
     </div>
     </div>);
 }

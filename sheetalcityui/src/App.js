@@ -12,8 +12,18 @@ function App() {
       setUserName(data);
       setIsLoggedIn(true);
     }else{
-      alert("Invalid Credentials !! " + message);
+      if(message==401){
+        alert("Invalid Credentials !! Please try again");
+      }else if(message==500){
+        alert("Internal Server Error !! Please try again later");
+      }else if(message==404){
+        alert("Service Not Found !! Please try again later");
+      }else if(message==403){
+        alert("Access Denied !! Please check your permissions");
+      }else{
+      alert(message);
     }
+  }
   };
 
   const handleLogout = () =>{

@@ -49,12 +49,10 @@ function Login({onLogin}) {
       }else{
         onLogin("",message);
       }
-      onLogin(data,message);
-      console.log("You are doing sign up");
     }
     }catch(error){
       console.error("Error During Login",error);
-      onLogin("");
+      onLogin("",error);
     }
   };
   function validateLogin(){

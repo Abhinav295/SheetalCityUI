@@ -19,13 +19,12 @@ function AddAdvancePayment({onAddPayment}){
 
     useEffect(()=>{
         const fetchData = async()=>{
-            const bb = 'bb'
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             try{
                 const response = await fetch("http://localhost:5000/sheetal.city/getAllUsers",{
             method:"GET",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
         });
@@ -60,9 +59,9 @@ function AddAdvancePayment({onAddPayment}){
 
     const handlePay = async(event)=>{
         event.preventDefault();
-        const bb = 'bb'
+        
         try{
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             const loginData = {
                 advanceElectricPayment:advanceElecticyPayment,
                 advanceMaintenancePayment:advanceMaintenancePayment,
@@ -71,7 +70,7 @@ function AddAdvancePayment({onAddPayment}){
             const response = await fetch("http://localhost:5000/sheetal.city/pay/advancePayment",{
                 method:"POST",
                 headers:{
-                    Authorization:`Basic ${enCred}`,
+                    Authorization:`Bearer ${token}`,
                     "Content-Type":"application/json"
                 },
                 body:JSON.stringify(loginData)
@@ -96,14 +95,13 @@ function AddAdvancePayment({onAddPayment}){
         const value = e.target.value;
         const results = users.filter((user)=> user.username.toLowerCase().includes(value.toLowerCase()));
         const fetchData = async()=>{
-            const bb = 'bb'
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             const id = results[0]["id"];
             try{
                 const response = await fetch(`http://localhost:5000/sheetal.city/house/getRegisterdHouse/${id}`,{
             method:"GET",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
         });

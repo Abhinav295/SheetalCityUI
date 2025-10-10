@@ -79,12 +79,11 @@ function ShowUserDetails({onShowUser}){
 
     async function handleRemove(i){
         try{
-            const bb = 'bb'
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             const response =  await fetch(`http://localhost:5000/sheetal.city/deleteUser/${i}`,{
             method:"DELETE",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
         });

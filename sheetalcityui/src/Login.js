@@ -15,18 +15,17 @@ function Login({onLogin}) {
       const loginData = {
         username:username,
         password:password,
-        type:usertype
+        userType:usertype
       }
       if(logintype){
-      const response = await fetch("http://localhost:5000/sheetal.city/login",{
+      const response = await fetch("http://localhost:5000/sheetal.city/auth/login",{
         method:"POST",
         headers:{
-          Authorization:`Basic ${enCred}`,
           "Content-Type":"application/json"
         },
         body:JSON.stringify(loginData)
       });
-      const data = await response.text();
+      const data = await response.json();
       const message = await response.status;
       if(response.ok){
       onLogin(data,message);
@@ -34,10 +33,9 @@ function Login({onLogin}) {
         onLogin("",message);
       }
     }else{
-      const response = await fetch("http://localhost:5000/sheetal.city/signup",{
+      const response = await fetch("http://localhost:5000/sheetal.city/auth/signup",{
         method:"POST",
         headers:{
-          Authorization:`Basic ${enCred}`,
           "Content-Type":"application/json"
         },
         body:JSON.stringify(loginData)
@@ -74,12 +72,12 @@ function Login({onLogin}) {
             <input type="password" placeholder="Enter Password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
             <br></br>
             <div className='flex-center'>
-            <input type="radio" id="user1" name="userType" value="User" onChange={(e)=>setUsertype(e.target.value)}></input>
-            <label for="user1"> I Am a User</label>
-            <input type="radio" id="user2" name="userType" value="Employee"  onChange={(e)=>setUsertype(e.target.value)}></input>
-            <label for="user2"> I Am a Employee</label>
-            <input type="radio" id="user3" name="userType" value="Admin"  onChange={(e)=>setUsertype(e.target.value)}></input>
-            <label for="user3"> I Am a Admin</label><br></br>
+            <input type="radio" id="user" name="userType" value="User" onChange={(e)=>setUsertype(e.target.value)}></input>
+            <label for="user"> I Am a User</label>
+            <input type="radio" id="employee" name="userType" value="Employee"  onChange={(e)=>setUsertype(e.target.value)}></input>
+            <label for="employee"> I Am a Employee</label>
+            <input type="radio" id="admin" name="userType" value="Admin"  onChange={(e)=>setUsertype(e.target.value)}></input>
+            <label for="admin"> I Am a Admin</label><br></br>
             </div>
             <button type="submit" disabled={!validateDetails()}>{validateLogin()}</button>
             <button type="button" onClick={(e)=>setLogintype(!logintype)}>click Here for {!logintype?"Sign In":"Sign Up"}</button>

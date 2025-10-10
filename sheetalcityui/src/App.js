@@ -9,7 +9,9 @@ function App() {
   const[userName,setUserName] = useState("");
   const handleLogin = (data,message) =>{
     if(data!=""){
-      setUserName(data);
+      setUserName(data['username']);
+      localStorage.setItem("token",data['token']);
+
       setIsLoggedIn(true);
     }else{
       if(message==401){
@@ -29,6 +31,7 @@ function App() {
   const handleLogout = () =>{
     setIsLoggedIn(false);
     setUserName("");
+    localStorage.removeItem("token");
   };
 
   return (

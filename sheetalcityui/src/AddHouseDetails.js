@@ -13,14 +13,13 @@ function AddHouseDetails({onAddingHouseMapping}){
     const [dueMaintenance,setDueMaintenance] = useState(0);
 
     useEffect(()=>{
-        const bb = 'bb'
-        const enCred = btoa(`${bb}:${bb}`);
+        const token = localStorage.getItem("token");
         const fetchData = async()=>{
             try{
             const responseCities =  await fetch("http://localhost:5000/sheetal.city/city/getAllCities",{
             method:"GET",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
         });
@@ -28,7 +27,7 @@ function AddHouseDetails({onAddingHouseMapping}){
         const responseUsers =  await fetch("http://localhost:5000/sheetal.city/getAllUsers",{
             method:"GET",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
         });
@@ -69,9 +68,8 @@ function AddHouseDetails({onAddingHouseMapping}){
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const bb = 'bb'
         try{
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             const houseMapping = {
                 block:block,
                 houseNo:houseNo,
@@ -84,7 +82,7 @@ function AddHouseDetails({onAddingHouseMapping}){
             const response = await fetch("http://localhost:5000/sheetal.city/house/RegisterHouse",{
                 method:"POST",
                 headers:{
-                    Authorization:`Basic ${enCred}`,
+                    Authorization:`Bearer ${token}`,
                     "Content-Type":"application/json"
                 },
                 body:JSON.stringify(houseMapping),

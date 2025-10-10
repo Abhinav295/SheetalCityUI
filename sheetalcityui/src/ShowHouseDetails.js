@@ -10,13 +10,12 @@ function ShowHouseDetails(){
 
     useEffect(()=>{
         const fetchData = async()=>{
-            const bb = 'bb'
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             try{
                 const response = await fetch("http://localhost:5000/sheetal.city/house/getAllRegisterdHouse",{
             method:"GET",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
         });

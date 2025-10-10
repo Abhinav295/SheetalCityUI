@@ -12,9 +12,8 @@ function AddCity({onAddingCity}){
 
     const handleSubmit = async(event)=>{
         event.preventDefault();
-        const bb = 'bb'
         try{
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             const loginData = {
                 cityName:cityName,
                 rsPerUnit:cityRsPerUnit,
@@ -23,7 +22,7 @@ function AddCity({onAddingCity}){
             const response = await fetch("http://localhost:5000/sheetal.city/city/addCity",{
                 method:"POST",
                 headers:{
-                    Authorization:`Basic ${enCred}`,
+                    Authorization:`Bearer ${token}`,
                     "Content-Type":"application/json"
                 },
                 body:JSON.stringify(loginData)

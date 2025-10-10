@@ -11,9 +11,8 @@ function AddUserDetails({onAddingUser}){
 
     const handleSubmit = async(event)=>{
         event.preventDefault();
-        const bb = 'bb'
         try{
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             const loginData = {
                 username:username,
                 password:password,
@@ -26,7 +25,7 @@ function AddUserDetails({onAddingUser}){
             const response = await fetch("http://localhost:5000/sheetal.city/addUser",{
                 method:"POST",
                 headers:{
-                    Authorization:`Basic ${enCred}`,
+                    Authorization:`Bearer ${token}`,
                     "Content-Type":"application/json"
                 },
                 body:JSON.stringify(loginData)

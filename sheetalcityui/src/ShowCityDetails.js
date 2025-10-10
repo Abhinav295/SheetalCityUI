@@ -8,14 +8,13 @@ function ShowUserDetails({onShowingCity}){
     const [editingRow,setEditingRow] = useState(null);
 
     useEffect(()=>{
-        const bb = 'bb'
-        const enCred = btoa(`${bb}:${bb}`);
+        const token = localStorage.getItem("token");
         const fetchData = async()=>{
             try{
             const response =  await fetch("http://localhost:5000/sheetal.city/city/getAllCities",{
             method:"GET",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
         });
@@ -44,13 +43,12 @@ function ShowUserDetails({onShowingCity}){
 
     const handleSave = async (index) => {
         try{
-            const bb = 'bb'
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             const updateCities = cities[index];
             const response = await fetch("http://localhost:5000/sheetal.city/city/updateCity",{
             method:"PUT",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
             body:JSON.stringify(updateCities)

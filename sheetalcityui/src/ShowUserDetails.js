@@ -10,19 +10,21 @@ function ShowUserDetails({onShowUser}){
     const [editingRow,setEditingRow] = useState(null);
 
     useEffect(()=>{
-        const bb = 'bb'
-        const enCred = btoa(`${bb}:${bb}`);
+        const token = localStorage.getItem("token");
         const fetchData = async()=>{
             try{
             const response =  await fetch("http://localhost:5000/sheetal.city/getAllUsers",{
             method:"GET",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
         });
         if(!response.ok){
-            throw new Error(`faield to fetch data ${response.status}`);
+            if(response.status===403){
+                throw new Error(`Access Forbidden JWT Token Expired ${response.status}`);
+            }
+            throw new Error(`failed to fetch data ${response.status}`);
         }
         const data = await response.json();
         setUsers(data);
@@ -52,13 +54,12 @@ function ShowUserDetails({onShowUser}){
 
     const handleSave = async (index) => {
         try{
-            const bb = 'bb'
-            const enCred = btoa(`${bb}:${bb}`);
+            const token = localStorage.getItem("token");
             const updateusers = users[index];
             const response = await fetch(`http://localhost:5000/sheetal.city/updateUser/${updateusers.id}`,{
             method:"PUT",
             headers:{
-                Authorization:`Basic ${enCred}`,
+                Authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"
             },
             body:JSON.stringify(updateusers)

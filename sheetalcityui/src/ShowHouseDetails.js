@@ -20,6 +20,10 @@ function ShowHouseDetails(){
             },
         });
                 if(!response.ok){
+                    if(response.status===403){
+                throw new Error(`Access Forbidden JWT Token Expired ${response.status}`);
+            }
+                    setFilterdItems([]);
                     throw Error(`failed to fetch data ${response.status}`)
                 }
                 const data = await response.json();
@@ -30,7 +34,7 @@ function ShowHouseDetails(){
             }finally{
                 setLoading(false);
             }
-        }
+        };
         fetchData();
     },[]);
     
@@ -50,7 +54,7 @@ function ShowHouseDetails(){
                     <th>DUE ELECTRIC</th>
                 </thead>
                 <tbody>
-                {filterdItems.map((registeredHouse,index)=>(
+                {filterdItems.length === 0 ? (<tr><td colSpan="6">No Data Found</td></tr>) : filterdItems.map((registeredHouse,index)=>(
                     <tr key={registeredHouse.id}>
                         <td>{registeredHouse.cityDetails.cityName}</td>
                         <td>{registeredHouse.block}</td>

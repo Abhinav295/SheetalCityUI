@@ -19,6 +19,9 @@ function ShowUserDetails({onShowingCity}){
             },
         });
         if(!response.ok){
+            if(response.status===403){
+                throw new Error(`Access Forbidden JWT Token Expired ${response.status}`);
+            }
             throw new Error("faield to fetch data");
         }
         const data = await response.json();

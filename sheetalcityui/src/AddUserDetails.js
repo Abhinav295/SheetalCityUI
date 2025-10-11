@@ -35,7 +35,7 @@ function AddUserDetails({onAddingUser}){
             if(response.ok){
                 onAddingUser(data,message);
             }else{
-                onAddingUser("",message);
+                onAddingUser("",data + " " + message);
             }
         }catch(error){
             onAddingUser("",error);

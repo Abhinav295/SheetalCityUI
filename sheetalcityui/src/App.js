@@ -17,7 +17,7 @@ function App() {
       if(message==401){
         alert("Invalid Credentials !! Please try again");
       }else if(message==500){
-        alert("Internal Server Error !! Please try again later");
+        alert("Duplicate User !! Please use different username");
       }else if(message==404){
         alert("Service Not Found !! Please try again later");
       }else if(message==403){

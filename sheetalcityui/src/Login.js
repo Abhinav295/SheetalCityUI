@@ -9,9 +9,7 @@ function Login({onLogin}) {
 
   const handleSubmit = async(event)=> {
     event.preventDefault();
-    const bb = 'bb'
     try{
-      const enCred = btoa(`${bb}:${bb}`);
       const loginData = {
         username:username,
         password:password,
@@ -25,11 +23,13 @@ function Login({onLogin}) {
         },
         body:JSON.stringify(loginData)
       });
-      const data = await response.json();
-      const message = await response.status;
+      
       if(response.ok){
+        const data = await response.json();
+        const message = await response.status;
       onLogin(data,message);
       }else{
+        const message = await response.status;
         onLogin("",message);
       }
     }else{
@@ -40,11 +40,12 @@ function Login({onLogin}) {
         },
         body:JSON.stringify(loginData)
       });
-      const data = await response.text();
-      const message = await response.status;
       if(response.ok){
+        const data = await response.json();
+        const message = await response.status;
       onLogin(data,message);
       }else{
+        const message = await response.status;
         onLogin("",message);
       }
     }

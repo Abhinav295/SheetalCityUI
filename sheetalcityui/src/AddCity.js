@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_URL } from './Config';
 
 function AddCity({onAddingCity}){
     const [cityName,setCityName]=useState("");
@@ -19,7 +20,7 @@ function AddCity({onAddingCity}){
                 rsPerUnit:cityRsPerUnit,
                 maintenancePerMonth:cityMaintenancePerMonth,
             }
-            const response = await fetch("http://localhost:5000/sheetal.city/city/addCity",{
+            const response = await fetch(`${BASE_URL}/sheetal.city/city/addCity`,{
                 method:"POST",
                 headers:{
                     Authorization:`Bearer ${token}`,

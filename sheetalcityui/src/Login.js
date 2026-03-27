@@ -1,4 +1,5 @@
 import './App.css';
+import { BASE_URL } from './Config';
 import React, { useState } from "react";
 
 function Login({onLogin}) {
@@ -16,7 +17,7 @@ function Login({onLogin}) {
         userType:usertype
       }
       if(logintype){
-      const response = await fetch("http://localhost:5000/sheetal.city/auth/login",{
+      const response = await fetch(`${BASE_URL}/sheetal.city/auth/login`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"
@@ -33,7 +34,7 @@ function Login({onLogin}) {
         onLogin("",message);
       }
     }else{
-      const response = await fetch("http://localhost:5000/sheetal.city/auth/signup",{
+      const response = await fetch(`${BASE_URL}/sheetal.city/auth/signup`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"

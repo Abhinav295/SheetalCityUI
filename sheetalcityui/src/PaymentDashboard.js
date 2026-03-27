@@ -7,6 +7,7 @@ import AddDuePaymentByCities from "./AddDuePaymentByCities";
 function PaymentDashboard({onClose}){
 
     const [isAddAdvancePaymentActive,setIsAddAdvancePaymentActive] = useState(false);
+    const [isShowAddDueForAllCustomersActive,setIsShowAddDueForAllCustomersActive] = useState(false);
     const [showMessage,setShowMessage] = useState(false);
     const [messages,setMessages ] = useState("");
 
@@ -25,6 +26,10 @@ function PaymentDashboard({onClose}){
             setTimeout(()=>{setShowMessage(false);setMessages("");},3000);
     }
 
+    const handleDueForAllCust = () =>{
+        setIsShowAddDueForAllCustomersActive(false);
+    }
+
     return (
     <div className="card">
         <div className="container">
@@ -37,7 +42,9 @@ function PaymentDashboard({onClose}){
         </div>
         <div className="card"><AddDuePayment/></div>
         <div className="card"><AddDuePaymentByCities/></div>
-        <div className="card"><AddDuePaymentByCustomer/></div>
+        <div className="card">
+        {isShowAddDueForAllCustomersActive?(<AddDuePaymentByCustomer onAddDue = {handleDueForAllCust}/>):(<div onClick={(e)=>{setIsShowAddDueForAllCustomersActive(true)}}>Generate Due Payment For All Customers</div>)}
+        </div>
     </div>
     </div>);
 }

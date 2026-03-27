@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from './Config';
 
 function AddHouseDetails({onAddingHouseMapping}){
     const [usersList,setUserList] = useState([]);
@@ -16,7 +17,7 @@ function AddHouseDetails({onAddingHouseMapping}){
         const token = localStorage.getItem("token");
         const fetchData = async()=>{
             try{
-            const responseCities =  await fetch("http://localhost:5000/sheetal.city/city/getAllCities",{
+            const responseCities =  await fetch(`${BASE_URL}/sheetal.city/city/getAllCities`,{
             method:"GET",
             headers:{
                 Authorization:`Bearer ${token}`,
@@ -24,7 +25,7 @@ function AddHouseDetails({onAddingHouseMapping}){
             },
         });
 
-        const responseUsers =  await fetch("http://localhost:5000/sheetal.city/getAllUsers",{
+        const responseUsers =  await fetch(`${BASE_URL}/sheetal.city/getAllUsers`,{
             method:"GET",
             headers:{
                 Authorization:`Bearer ${token}`,
@@ -79,7 +80,7 @@ function AddHouseDetails({onAddingHouseMapping}){
                 dueMaintenance:dueMaintenance,
             }
             console.log(JSON.stringify(houseMapping));
-            const response = await fetch("http://localhost:5000/sheetal.city/house/RegisterHouse",{
+            const response = await fetch(`${BASE_URL}/sheetal.city/house/RegisterHouse`,{
                 method:"POST",
                 headers:{
                     Authorization:`Bearer ${token}`,

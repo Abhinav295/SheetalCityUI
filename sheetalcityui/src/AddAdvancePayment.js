@@ -1,5 +1,6 @@
 import './Main.css'
 import { useState, useEffect } from "react";
+import { BASE_URL } from './Config';
 
 function AddAdvancePayment({onAddPayment}){
     const [houseMappings,setHouseMappings] = useState([]);
@@ -21,7 +22,7 @@ function AddAdvancePayment({onAddPayment}){
         const fetchData = async()=>{
             const token = localStorage.getItem("token");
             try{
-                const response = await fetch("http://localhost:5000/sheetal.city/getAllUsers",{
+                const response = await fetch(`${BASE_URL}/sheetal.city/getAllUsers`,{
             method:"GET",
             headers:{
                 Authorization:`Bearer ${token}`,
@@ -67,7 +68,7 @@ function AddAdvancePayment({onAddPayment}){
                 advanceMaintenancePayment:advanceMaintenancePayment,
                 userId:userId,
             }
-            const response = await fetch("http://localhost:5000/sheetal.city/pay/advancePayment",{
+            const response = await fetch(`${BASE_URL}/sheetal.city/pay/advancePayment`,{
                 method:"POST",
                 headers:{
                     Authorization:`Bearer ${token}`,
@@ -98,7 +99,7 @@ function AddAdvancePayment({onAddPayment}){
             const token = localStorage.getItem("token");
             const id = results[0]["id"];
             try{
-                const response = await fetch(`http://localhost:5000/sheetal.city/house/getRegisterdHouse/${id}`,{
+                const response = await fetch(`${BASE_URL}/sheetal.city/house/getRegisterdHouse/${id}`,{
             method:"GET",
             headers:{
                 Authorization:`Bearer ${token}`,

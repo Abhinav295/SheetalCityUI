@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from './Config';
 
 function ShowHouseDetails(){
     const [houseMapping,setHouseMapping] = useState([]);
@@ -12,7 +13,7 @@ function ShowHouseDetails(){
         const fetchData = async()=>{
             const token = localStorage.getItem("token");
             try{
-                const response = await fetch("http://localhost:5000/sheetal.city/house/getAllRegisterdHouse",{
+                const response = await fetch(`${BASE_URL}/sheetal.city/house/getAllRegisterdHouse`,{
             method:"GET",
             headers:{
                 Authorization:`Bearer ${token}`,

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { BASE_URL } from './Config';
 
 function ShowUserDetails({onShowingCity}){
     const [cities,setCities] = useState([]);
@@ -11,7 +11,7 @@ function ShowUserDetails({onShowingCity}){
         const token = localStorage.getItem("token");
         const fetchData = async()=>{
             try{
-            const response =  await fetch("http://localhost:5000/sheetal.city/city/getAllCities",{
+            const response =  await fetch(`${BASE_URL}/sheetal.city/city/getAllCities`,{
             method:"GET",
             headers:{
                 Authorization:`Bearer ${token}`,
@@ -48,7 +48,7 @@ function ShowUserDetails({onShowingCity}){
         try{
             const token = localStorage.getItem("token");
             const updateCities = cities[index];
-            const response = await fetch("http://localhost:5000/sheetal.city/city/updateCity",{
+            const response = await fetch(`${BASE_URL}/sheetal.city/city/updateCity`,{
             method:"PUT",
             headers:{
                 Authorization:`Bearer ${token}`,

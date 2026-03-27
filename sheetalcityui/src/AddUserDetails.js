@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import { BASE_URL } from './Config';
 
 function AddUserDetails({onAddingUser}){
     const [username,setUsername] = useState("");
@@ -22,7 +23,7 @@ function AddUserDetails({onAddingUser}){
                 mobNo:mobile,
                 isActive:false,
             }
-            const response = await fetch("http://localhost:5000/sheetal.city/addUser",{
+            const response = await fetch(`${BASE_URL}/sheetal.city/addUser`,{
                 method:"POST",
                 headers:{
                     Authorization:`Bearer ${token}`,

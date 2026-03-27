@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from "react";
 import './App.css';
+import { BASE_URL } from './Config';
 
 function ShowUserDetails({onShowUser}){
     const [users,setUsers] = useState([]);
@@ -13,7 +14,7 @@ function ShowUserDetails({onShowUser}){
         const token = localStorage.getItem("token");
         const fetchData = async()=>{
             try{
-            const response =  await fetch("http://localhost:5000/sheetal.city/getAllUsers",{
+            const response =  await fetch(`${BASE_URL}/sheetal.city/getAllUsers`,{
             method:"GET",
             headers:{
                 Authorization:`Bearer ${token}`,
@@ -56,7 +57,7 @@ function ShowUserDetails({onShowUser}){
         try{
             const token = localStorage.getItem("token");
             const updateusers = users[index];
-            const response = await fetch(`http://localhost:5000/sheetal.city/updateUser/${updateusers.id}`,{
+            const response = await fetch(`${BASE_URL}/sheetal.city/updateUser/${updateusers.id}`,{
             method:"PUT",
             headers:{
                 Authorization:`Bearer ${token}`,
@@ -81,7 +82,7 @@ function ShowUserDetails({onShowUser}){
     async function handleRemove(i){
         try{
             const token = localStorage.getItem("token");
-            const response =  await fetch(`http://localhost:5000/sheetal.city/deleteUser/${i}`,{
+            const response =  await fetch(`${BASE_URL}/sheetal.city/deleteUser/${i}`,{
             method:"DELETE",
             headers:{
                 Authorization:`Bearer ${token}`,

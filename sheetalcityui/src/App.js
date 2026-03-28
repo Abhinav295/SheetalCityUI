@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import './App.css';
+import './Login.css';
 
 function App() {
   const[isLoggedIn,setIsLoggedIn]=useState(false);
@@ -35,9 +36,7 @@ function App() {
   };
 
   return (
-    <div className='container'>
-      <header className='flex-center'><h1>SHEETAL CITY UI</h1></header>
-      {isLoggedIn?(<h3></h3>):(<h3>Login Page</h3>)}
+    <div className='login-container'>
       {isLoggedIn?(<Dashboard onLogout={handleLogout} userName={userName}/>):(<Login onLogin={handleLogin}/>)}
     </div>
   );

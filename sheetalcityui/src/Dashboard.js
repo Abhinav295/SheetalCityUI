@@ -42,14 +42,27 @@ function paymentOperationActive(){
 }
 
 return(
-    <div>
-        <h1 className="flex-center">Welcome to the Dashboard</h1>
-        <div className="flex"><h3>Welcome {userName}</h3>
-        <button onClick={onLogout}>Logout</button></div>
-        {showMessage?(<p>{messages}</p>):(<p></p>)}
-        <div className="container">
-        {isUserOperationActive?(<UsersOperationDashboard onClose = {handleUserOperation}/>):(<div className="card" onClick={userOperationActive}>User Operations Dashboard</div>)}
-        {isPaymentActive?(<PaymentDashboard onClose={handlePaymentOperation}/>):(<div className="card" onClick={paymentOperationActive}>Payment Operations Dashboard</div>)}
+    <div className="dashboard">
+        <div className="sidebar">
+            <div className="profile">
+                <div className="logo">L</div>
+                <h2>{userName}</h2>
+                <p>Admin</p>
+                <div className="card" onClick={userOperationActive}>User Operations Dashboard</div>
+                <div className="card" onClick={paymentOperationActive}>Payment Operations Dashboard</div>
+                <button onClick={onLogout}>Logout</button>
+            </div>
+        </div>
+        <div className="main">
+            <h1 className="flex-center">Welcome to the Dashboard</h1>
+            <div className="flex">
+                <h3>Welcome {userName}</h3>
+            </div>
+            {showMessage?(<p>{messages}</p>):(<p></p>)}
+            <div className="container">
+                {isUserOperationActive?(<UsersOperationDashboard onClose = {handleUserOperation}/>):(<h1> </h1>)}
+                {isPaymentActive?(<PaymentDashboard onClose={handlePaymentOperation}/>):(<h1> </h1>)}
+            </div>
         </div>
     </div>
 )

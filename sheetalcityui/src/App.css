@@ -14,7 +14,7 @@ body {
   line-height: 1.5;
   background-color: #f5f5f5;
   color: #333;
-  padding: 0 1rem;
+  /*padding: 0 1rem;*/
 }
 
 /* Responsive Containers */
@@ -232,4 +232,23 @@ tr:hover {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
   }
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  color: black;
+  background:rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+}
+.profile {
+    text-align: center;
+}
+.dashboard {
+  display: flex;
+}
+.main{
+  flex: 1;
+  padding: 30px;
+  color: black;
 }
